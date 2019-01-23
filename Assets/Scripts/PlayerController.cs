@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 	private float _inputHorizontal;
 	private float _inputVertical;
 	private Rigidbody2D _myRigidBody;
+	private bool _isAlive = true;
 
 	private void Start()
 	{
@@ -18,7 +19,7 @@ public class PlayerController : MonoBehaviour
 	private void FixedUpdate()
 	{
 		//todo improve physics of player
-		
+
 		//handles the move forward of the player
 		_myRigidBody.velocity += (Vector2) transform.up * _inputVertical * speedVertical;
 		if (_myRigidBody.velocity.magnitude > speedMaxForward)
@@ -33,12 +34,19 @@ public class PlayerController : MonoBehaviour
 
 	private void Update()
 	{
-		_inputHorizontal = Input.GetAxis("Horizontal");
-		_inputVertical = Input.GetAxis("Vertical");
+		if (_isAlive)
+		{
+			_inputHorizontal = Input.GetAxis("Horizontal");
+			_inputVertical = Input.GetAxis("Vertical");
+		}
 	}
 
 	public void Die()
 	{
-		//todo implement dying method.
+		if (_isAlive)
+		{
+			_isAlive = false;
+			//todo choose what dying represent in this game
+		}
 	}
 }
