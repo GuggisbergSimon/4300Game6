@@ -10,6 +10,7 @@ public class Beacon : MonoBehaviour
 	{
 		if (other.CompareTag("Player") && !_isActivated)
 		{
+			GameManager.Instance.Player.BeaconActivated(gameObject);
 			_isActivated = true;
 			//todo implement actual visual effects here
 		}
