@@ -7,7 +7,9 @@ public class GameManager : MonoBehaviour
 	public static GameManager Instance { get; private set; }
 	private PlayerController player;
 	public PlayerController Player => player;
-	private List<GameObject> _beacons = new List<GameObject>();
+
+	private List<GameObject> beacons = new List<GameObject>();
+	public List<GameObject> Beacons => beacons;
 
 	private void OnEnable()
 	{
@@ -38,14 +40,15 @@ public class GameManager : MonoBehaviour
 		player = FindObjectOfType<PlayerController>();
 		foreach (var beacon in FindObjectsOfType<Beacon>())
 		{
-			_beacons.Add(beacon.gameObject);
+			beacons.Add(beacon.gameObject);
 		}
+
 		//player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 	}
 
 	private void Awake()
 	{
-        if (Instance != null && Instance != this)
+		if (Instance != null && Instance != this)
 		{
 			Destroy(gameObject);
 		}

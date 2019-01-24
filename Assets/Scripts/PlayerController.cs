@@ -48,14 +48,9 @@ public class PlayerController : MonoBehaviour
 	public void BeaconActivated(GameObject beacon)
 	{
 		_beaconsActivated.Add(beacon);
-	}
-
-	private void BeaconsDeactivate()
-	{
-		if (_beaconsActivated.Count > 0)
+		if (_beaconsActivated.Count >= GameManager.Instance.Beacons.Count)
 		{
-			_beaconsActivated[_beaconsActivated.Count-1].SetActive(true);
-			_beaconsActivated.RemoveAt(-_beaconsActivated.Count - 1);
+			//todo implement end of game here
 		}
 	}
 	
@@ -66,8 +61,7 @@ public class PlayerController : MonoBehaviour
 			_inputHorizontal = 0.0f;
 			_inputVertical = 0.0f;
 			_isAlive = false;
-			BeaconsDeactivate();
-			//todo choose what dying represent in this game
+			//todo implement code to go back to start etc
 		}
 	}
 }
