@@ -63,12 +63,12 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	private IEnumerator Respawn(float speed)
+	private IEnumerator Respawn()
 	{
 		GameManager.Instance.CameraManager.Noise(amplitudeGainRespawn, frequencyGainRespawn);
 		float timer = 0.0f;
 		Vector3 initPos = transform.position;
-		float time = (initPos - respawnPos).magnitude/speed;
+		float time = (initPos - respawnPos).magnitude/respawnSpeed;
 		while (timer < time)
 		{
 			transform.position = Vector3.Lerp(initPos, respawnPos, timer / time);
@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
 			_inputHorizontal = 0.0f;
 			_inputVertical = 0.0f;
 			_isAlive = false;
-			StartCoroutine(Respawn(respawnSpeed));
+			StartCoroutine(Respawn());
 			//todo implement code to fade to black
 		}
 	}
