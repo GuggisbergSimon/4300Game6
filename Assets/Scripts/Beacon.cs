@@ -11,6 +11,7 @@ public class Beacon : MonoBehaviour
 	{
 		if (other.CompareTag("Player") && !_isActivated)
 		{
+			GameManager.Instance.Player.BeaconActivated(gameObject);
 			_isActivated = true;
 			gameObject.SetActive(false);
 			Instantiate(ink, transform.position, Quaternion.identity);
