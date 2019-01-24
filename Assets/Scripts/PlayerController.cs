@@ -1,19 +1,25 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-	[SerializeField] private float speedVertical = 5.0f;
-	[SerializeField] private float speedRotation = 5.0f;
-	[SerializeField] private float speedMaxForward = 10.0f;
+	[SerializeField] private float verticalSpeed = 5.0f;
+	[SerializeField] private float rotationSpeed = 5.0f;
+	[SerializeField] private float maxForwardSpeed = 10.0f;
+	[SerializeField] private float timeToRespawn = 2.0f;
+	[SerializeField] private float amplitudeGainRespawn = 5.0f;
+	[SerializeField] private float frequencyGainRespawn = 2.0f;
 	private float _inputHorizontal;
 	private float _inputVertical;
 	private Rigidbody2D _myRigidBody;
 	private bool _isAlive = true;
+	private Vector3 respawnPos;
 	private List<GameObject> _beaconsActivated = new List<GameObject>();
 
 	private void Start()
 	{
+		respawnPos = transform.position;
 		_myRigidBody = GetComponent<Rigidbody2D>();
 	}
 
@@ -24,16 +30,16 @@ public class PlayerController : MonoBehaviour
 		//handles the move forward of the player
 		if (_inputVertical > 0)
 		{
-			_myRigidBody.velocity += (Vector2) transform.up * _inputVertical * speedVertical;
+			_myRigidBody.velocity += (Vector2) transform.up * _inputVertical * verticalSpeed;
 		}
 
-		if (_myRigidBody.velocity.magnitude > speedMaxForward)
+		if (_myRigidBody.velocity.magnitude > maxForwardSpeed)
 		{
-			_myRigidBody.velocity = _myRigidBody.velocity.normalized * speedMaxForward;
+			_myRigidBody.velocity = _myRigidBody.velocity.normalized * maxForwardSpeed;
 		}
 
 		//handles the rotation of the player
-		_myRigidBody.MoveRotation(transform.rotation.eulerAngles.z - speedRotation * _inputHorizontal);
+		_myRigidBody.MoveRotation(transform.rotation.eulerAngles.z - rotationSpeed * _inputHorizontal);
 	}
 
 	private void Update()
@@ -53,7 +59,25 @@ public class PlayerController : MonoBehaviour
 			//todo implement end of game here
 		}
 	}
-	
+
+	private IEnumerator Respawn(float time)
+	{
+		//todo change time by speed
+		GameManager.Instance.CameraManager.Noise(amplitudeGainRespawn, frequencyGainRespawn);
+		float timer = 0.0f;
+		Vector3 initPos = transform.position;
+		while (timer < time)
+		{
+			transform.position = Vector3.Lerp(initPos, respawnPos, timer / time);
+			timer += Time.deltaTime;
+			yield return null;
+		}
+
+		//todo add invincibility time
+		_isAlive = true;
+		GameManager.Instance.CameraManager.Noise(0, 0);
+	}
+
 	public void Die()
 	{
 		if (_isAlive)
@@ -61,7 +85,8 @@ public class PlayerController : MonoBehaviour
 			_inputHorizontal = 0.0f;
 			_inputVertical = 0.0f;
 			_isAlive = false;
-			//todo implement code to go back to start etc
+			StartCoroutine(Respawn(timeToRespawn));
+			//todo implement code to fade to black
 		}
 	}
 }

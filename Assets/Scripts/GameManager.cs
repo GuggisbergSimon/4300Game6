@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
 	private PlayerController player;
 	public PlayerController Player => player;
 
+	private CameraManager cameraManager;
+
+	public CameraManager CameraManager => cameraManager;
+
 	private List<GameObject> beacons = new List<GameObject>();
 	public List<GameObject> Beacons => beacons;
 
@@ -48,6 +52,7 @@ public class GameManager : MonoBehaviour
 
 	private void Awake()
 	{
+		cameraManager = GetComponent<CameraManager>();
 		if (Instance != null && Instance != this)
 		{
 			Destroy(gameObject);
