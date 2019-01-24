@@ -2,8 +2,9 @@
 
 public class Chaser : MonoBehaviour
 {
-	[SerializeField] private float speedForward = 3.0f;
-	[SerializeField] private float speedRotation = 3.0f;
+	[SerializeField] private float forwardSpeed = 3.0f;
+	[SerializeField] private float rotationSpeed = 3.0f;
+	[SerializeField, Range(0, 180)] private float visionAngle = 20.0f;
 	private Rigidbody2D _myRigidBody;
 
 	private void Start()
@@ -13,15 +14,19 @@ public class Chaser : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		//todo improve physics of chaser
-		//handle the velocity
-		_myRigidBody.velocity = (Vector3) transform.up * speedForward;
-		
-		//handle the rotation
+		//todo improve physics movement of chaser
+
 		Vector2 diff = transform.position - GameManager.Instance.Player.transform.position;
+		if (Mathf.Abs(180.0f-Vector3.Angle(transform.up, diff)) < visionAngle)
+		{
+			_myRigidBody.velocity = (Vector3) transform.up * forwardSpeed;
+		}
+
+		//handle the rotation
 		Quaternion targetRot = Quaternion.Euler(0f, 0f, Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg + 90);
 		transform.rotation =
-			Quaternion.RotateTowards(transform.rotation, targetRot, speedRotation * Time.deltaTime);
+			Quaternion.RotateTowards(transform.rotation, targetRot,
+				rotationSpeed / _myRigidBody.velocity.magnitude * Time.deltaTime);
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)

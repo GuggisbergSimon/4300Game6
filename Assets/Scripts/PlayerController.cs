@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
 	{
 		if (_isAlive)
 		{
+			_inputHorizontal = 0.0f;
+			_inputVertical = 0.0f;
 			_isAlive = false;
 			//todo choose what dying represent in this game
 		}
