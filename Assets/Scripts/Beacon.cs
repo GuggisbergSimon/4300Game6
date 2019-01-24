@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Beacon : MonoBehaviour
 {
+	[SerializeField]private GameObject ink;
 	private bool _isActivated = false;
 	
 	private void OnTriggerEnter2D(Collider2D other)
@@ -11,7 +12,8 @@ public class Beacon : MonoBehaviour
 		if (other.CompareTag("Player") && !_isActivated)
 		{
 			_isActivated = true;
-			//todo implement actual visual effects here
+			gameObject.SetActive(false);
+			Instantiate(ink, transform.position, Quaternion.identity);
 		}
 	}
 }
