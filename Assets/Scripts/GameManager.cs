@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -6,6 +7,7 @@ public class GameManager : MonoBehaviour
 	public static GameManager Instance { get; private set; }
 	private PlayerController player;
 	public PlayerController Player => player;
+	private List<GameObject> _beacons = new List<GameObject>();
 
 	private void OnEnable()
 	{
@@ -34,6 +36,10 @@ public class GameManager : MonoBehaviour
 	private void Setup()
 	{
 		player = FindObjectOfType<PlayerController>();
+		foreach (var beacon in FindObjectsOfType<Beacon>())
+		{
+			_beacons.Add(beacon.gameObject);
+		}
 		//player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 	}
 
