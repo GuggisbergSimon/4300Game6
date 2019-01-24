@@ -293,34 +293,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 121361931, guid: 5682b57efc6040641a1ff2b68d264acb, type: 3}
-      propertyPath: forwardAcceleration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 121361931, guid: 5682b57efc6040641a1ff2b68d264acb, type: 3}
-      propertyPath: topSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458874933, guid: 5682b57efc6040641a1ff2b68d264acb, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458874933, guid: 5682b57efc6040641a1ff2b68d264acb, type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.key1.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458874933, guid: 5682b57efc6040641a1ff2b68d264acb, type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.atime1
-      value: 65535
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458874933, guid: 5682b57efc6040641a1ff2b68d264acb, type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.m_NumAlphaKeys
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458874933, guid: 5682b57efc6040641a1ff2b68d264acb, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5682b57efc6040641a1ff2b68d264acb, type: 3}
 --- !u!1001 &7682068657381523523
@@ -395,11 +367,6 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 236084602}
-    - target: {fileID: 7682068657968709849, guid: f0f782b59a236c7449f6e3c77de48fa0,
-        type: 3}
-      propertyPath: m_Lens.OrthographicSize
-      value: 20
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0f782b59a236c7449f6e3c77de48fa0, type: 3}
 --- !u!1001 &7810590059016780151
@@ -482,11 +449,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Beacon
-      objectReference: {fileID: 0}
-    - target: {fileID: 3665203010199098513, guid: fbcd257a019375b43b75150405e96bae,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8412922128625593973, guid: fbcd257a019375b43b75150405e96bae,
         type: 3}
