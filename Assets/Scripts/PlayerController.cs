@@ -7,13 +7,16 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private float verticalSpeed = 5.0f;
 	[SerializeField] private float rotationSpeed = 5.0f;
 	[SerializeField] private float maxForwardSpeed = 10.0f;
-	[SerializeField] private float timeToRespawn = 2.0f;
+	[SerializeField] private float respawnSpeed = 2.0f;
+	[SerializeField] private float invincibilityTime = 1.0f;
 	[SerializeField] private float amplitudeGainRespawn = 5.0f;
 	[SerializeField] private float frequencyGainRespawn = 2.0f;
 	private float _inputHorizontal;
 	private float _inputVertical;
 	private Rigidbody2D _myRigidBody;
 	private bool _isAlive = true;
+	private bool isInvincible = false;
+	public bool IsInvincible => isInvincible;
 	private Vector3 respawnPos;
 	private List<GameObject> _beaconsActivated = new List<GameObject>();
 
@@ -60,12 +63,12 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	private IEnumerator Respawn(float time)
+	private IEnumerator Respawn(float speed)
 	{
-		//todo change time by speed
 		GameManager.Instance.CameraManager.Noise(amplitudeGainRespawn, frequencyGainRespawn);
 		float timer = 0.0f;
 		Vector3 initPos = transform.position;
+		float time = (initPos - respawnPos).magnitude/speed;
 		while (timer < time)
 		{
 			transform.position = Vector3.Lerp(initPos, respawnPos, timer / time);
@@ -73,9 +76,11 @@ public class PlayerController : MonoBehaviour
 			yield return null;
 		}
 
-		//todo add invincibility time
+		isInvincible = true;
 		_isAlive = true;
 		GameManager.Instance.CameraManager.Noise(0, 0);
+		yield return new WaitForSeconds(invincibilityTime);
+		isInvincible = false;
 	}
 
 	public void Die()
@@ -85,7 +90,7 @@ public class PlayerController : MonoBehaviour
 			_inputHorizontal = 0.0f;
 			_inputVertical = 0.0f;
 			_isAlive = false;
-			StartCoroutine(Respawn(timeToRespawn));
+			StartCoroutine(Respawn(respawnSpeed));
 			//todo implement code to fade to black
 		}
 	}
