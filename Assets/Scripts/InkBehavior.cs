@@ -5,24 +5,22 @@ using UnityEngine;
 
 public class InkBehavior : MonoBehaviour
 {
-    [SerializeField] private float time;
-    private float _timer;
-    private Vector2 maxScale;
+	[SerializeField] private float time;
+	[SerializeField] private Vector2 maxScale;
 
-    private void Start()
-    {
-        StartCoroutine(InkExplosion(time));
-    }
+	private void Start()
+	{
+		StartCoroutine(InkExplosion(time));
+	}
 
-    IEnumerator InkExplosion(float time)
-    {
-        _timer = 0;
-        Vector3 initScale = transform.localScale;
-        while (true)
-        {
-            transform.localScale += Vector3.Lerp(initScale, maxScale, _timer/time);
-            _timer += Time.deltaTime;
-            yield return null;
-        }
-    }
+	private IEnumerator InkExplosion(float time)
+	{
+		float timer = 0.0f;
+		while (true)
+		{
+			transform.localScale = Vector3.Lerp(Vector2.zero, maxScale, timer / time);
+			timer += Time.deltaTime;
+			yield return null;
+		}
+	}
 }
