@@ -5,23 +5,7 @@ using UnityEngine;
 public class Beacon : MonoBehaviour
 {
 	[SerializeField] private GameObject inkPrefab = null;
-	[SerializeField] private float minRotationConstantSpeed = 1.0f;
-	[SerializeField] private float maxRotationConstantSpeed = 2.0f;
 	private bool _isInked = false;
-	private float _rotationConstantSpeed;
-
-	private void Start()
-	{
-		_rotationConstantSpeed = Random.Range(minRotationConstantSpeed, maxRotationConstantSpeed);
-	}
-
-	private void Update()
-	{
-		//if (!_isInked)
-		{
-			transform.Rotate(0, 0, _rotationConstantSpeed * Time.deltaTime);
-		}
-	}
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{

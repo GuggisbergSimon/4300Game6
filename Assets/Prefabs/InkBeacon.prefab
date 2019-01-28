@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4129079385812700040}
   - component: {fileID: 4129079385812700042}
+  - component: {fileID: 8164955481557244616}
   m_Layer: 0
   m_Name: InkBeacon
   m_TagString: Untagged
@@ -48,8 +49,6 @@ MonoBehaviour:
   maxTimeGrowing: 2
   minScaleAfterGrowing: 4
   maxScaleAfterGrowing: 6
-  minRotationConstantSpeed: -2
-  maxRotationConstantSpeed: 2
   minInkSpawned: 2
   maxInkSpawned: 5
   inkPrefab: {fileID: 4129079385812700053, guid: 9634455641e635c49a6754457f5ae472,
@@ -71,6 +70,20 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 444abecb114e9114db1c43aa29a736f1, type: 3}
   - {fileID: 21300000, guid: 247a89be7e24675498145604e5c58697, type: 3}
   - {fileID: 21300000, guid: 690ba2f9111461f46a4d10dae4927573, type: 3}
+--- !u!114 &8164955481557244616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4129079385812700053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8777b6cadd61700409ce803aeca13ab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minRotationConstantSpeed: -2
+  maxRotationConstantSpeed: 2
 --- !u!1 &4287027541630838587
 GameObject:
   m_ObjectHideFlags: 0
