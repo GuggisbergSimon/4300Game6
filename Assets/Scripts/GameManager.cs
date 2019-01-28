@@ -14,13 +14,21 @@ public class GameManager : MonoBehaviour
 	private CameraManager cameraManager;
 
 	public CameraManager CameraManager => cameraManager;
+	private BeaconFinder beaconFinder;
+
+	public BeaconFinder BeaconFinder => beaconFinder;
 	private UIManager uiManager;
 
 	public UIManager UiManager => uiManager;
 
 	private List<GameObject> beacons = new List<GameObject>();
 	public List<GameObject> Beacons => beacons;
+	private List<GameObject> beaconsActivated = new List<GameObject>();
 
+	public List<GameObject> BeaconsActivated => beaconsActivated;
+	private List<GameObject> beaconsLeft = new List<GameObject>();
+	public List<GameObject> BeaconsLeft => beaconsLeft;
+	
 	private void OnEnable()
 	{
 		SceneManager.sceneLoaded += OnLevelFinishedLoadingScene;
@@ -50,12 +58,15 @@ public class GameManager : MonoBehaviour
 		player = FindObjectOfType<PlayerController>();
 		chaser = FindObjectOfType<Chaser>();
 		uiManager = FindObjectOfType<UIManager>();
+		beaconFinder = FindObjectOfType<BeaconFinder>();
 		if (player != null)
 		{
 			beacons.Clear();
+			BeaconsLeft.Clear();
 			foreach (var beacon in GameObject.FindGameObjectsWithTag("Beacon"))
 			{
 				beacons.Add(beacon.gameObject);
+				beaconsLeft.Add(beacon.gameObject);
 			}
 		}
 
