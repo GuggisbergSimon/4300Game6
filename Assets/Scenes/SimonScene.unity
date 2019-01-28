@@ -299,7 +299,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 503282455}
-  m_RootOrder: 4
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &213678984
 PrefabInstance:
@@ -312,6 +312,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Beacon (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5616935286153482751, guid: 5e61b2405c748744ba72ca7f0691a8a4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Beacon
       objectReference: {fileID: 0}
     - target: {fileID: 5621685750038593658, guid: 5e61b2405c748744ba72ca7f0691a8a4,
         type: 3}
@@ -351,7 +356,7 @@ PrefabInstance:
     - target: {fileID: 5621685750038593658, guid: 5e61b2405c748744ba72ca7f0691a8a4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5621685750038593658, guid: 5e61b2405c748744ba72ca7f0691a8a4,
         type: 3}
@@ -414,7 +419,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 503282455}
-  m_RootOrder: 5
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &260937002
 BoxCollider2D:
@@ -623,14 +628,14 @@ Transform:
   - {fileID: 32530269}
   - {fileID: 18892823}
   - {fileID: 500646142}
-  - {fileID: 175842148}
-  - {fileID: 260937001}
   - {fileID: 1898700359}
   - {fileID: 1732657322}
   - {fileID: 1350714368}
   - {fileID: 2110346062}
   - {fileID: 861377610}
   - {fileID: 2038882395}
+  - {fileID: 175842148}
+  - {fileID: 260937001}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -877,7 +882,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &795126891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1143,6 +1148,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Beacon (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 5616935286153482751, guid: 5e61b2405c748744ba72ca7f0691a8a4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Beacon
+      objectReference: {fileID: 0}
     - target: {fileID: 5621685750038593658, guid: 5e61b2405c748744ba72ca7f0691a8a4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1181,7 +1191,7 @@ PrefabInstance:
     - target: {fileID: 5621685750038593658, guid: 5e61b2405c748744ba72ca7f0691a8a4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5621685750038593658, guid: 5e61b2405c748744ba72ca7f0691a8a4,
         type: 3}
@@ -1223,6 +1233,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Beacon (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5616935286153482751, guid: 5e61b2405c748744ba72ca7f0691a8a4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Beacon
       objectReference: {fileID: 0}
     - target: {fileID: 5621685750038593658, guid: 5e61b2405c748744ba72ca7f0691a8a4,
         type: 3}
@@ -1292,6 +1307,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Beacon (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5616935286153482751, guid: 5e61b2405c748744ba72ca7f0691a8a4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Beacon
       objectReference: {fileID: 0}
     - target: {fileID: 5621685750038593658, guid: 5e61b2405c748744ba72ca7f0691a8a4,
         type: 3}
@@ -1368,6 +1388,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Beacon (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5616935286153482751, guid: 5e61b2405c748744ba72ca7f0691a8a4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Beacon
+      objectReference: {fileID: 0}
     - target: {fileID: 5621685750038593658, guid: 5e61b2405c748744ba72ca7f0691a8a4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1406,7 +1431,7 @@ PrefabInstance:
     - target: {fileID: 5621685750038593658, guid: 5e61b2405c748744ba72ca7f0691a8a4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5621685750038593658, guid: 5e61b2405c748744ba72ca7f0691a8a4,
         type: 3}
@@ -1442,6 +1467,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Beacon (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5616935286153482751, guid: 5e61b2405c748744ba72ca7f0691a8a4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Beacon
       objectReference: {fileID: 0}
     - target: {fileID: 5621685750038593658, guid: 5e61b2405c748744ba72ca7f0691a8a4,
         type: 3}
@@ -1481,7 +1511,7 @@ PrefabInstance:
     - target: {fileID: 5621685750038593658, guid: 5e61b2405c748744ba72ca7f0691a8a4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5621685750038593658, guid: 5e61b2405c748744ba72ca7f0691a8a4,
         type: 3}
@@ -1517,6 +1547,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Beacon (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5616935286153482751, guid: 5e61b2405c748744ba72ca7f0691a8a4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Beacon
       objectReference: {fileID: 0}
     - target: {fileID: 5621685750038593658, guid: 5e61b2405c748744ba72ca7f0691a8a4,
         type: 3}
@@ -1603,6 +1638,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Beacon (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 5616935286153482751, guid: 5e61b2405c748744ba72ca7f0691a8a4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Beacon
+      objectReference: {fileID: 0}
     - target: {fileID: 5621685750038593658, guid: 5e61b2405c748744ba72ca7f0691a8a4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1641,7 +1681,7 @@ PrefabInstance:
     - target: {fileID: 5621685750038593658, guid: 5e61b2405c748744ba72ca7f0691a8a4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5621685750038593658, guid: 5e61b2405c748744ba72ca7f0691a8a4,
         type: 3}
@@ -1727,6 +1767,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 121361931, guid: 5682b57efc6040641a1ff2b68d264acb, type: 3}
+      propertyPath: topSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 121361931, guid: 5682b57efc6040641a1ff2b68d264acb, type: 3}
+      propertyPath: forwardAcceleration
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458874933, guid: 5682b57efc6040641a1ff2b68d264acb, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5682b57efc6040641a1ff2b68d264acb, type: 3}
 --- !u!4 &2110346062 stripped
@@ -1746,6 +1798,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Beacon (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5616935286153482751, guid: 5e61b2405c748744ba72ca7f0691a8a4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Beacon
       objectReference: {fileID: 0}
     - target: {fileID: 5621685750038593658, guid: 5e61b2405c748744ba72ca7f0691a8a4,
         type: 3}
@@ -1785,7 +1842,7 @@ PrefabInstance:
     - target: {fileID: 5621685750038593658, guid: 5e61b2405c748744ba72ca7f0691a8a4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5621685750038593658, guid: 5e61b2405c748744ba72ca7f0691a8a4,
         type: 3}
@@ -1820,6 +1877,11 @@ PrefabInstance:
     - target: {fileID: 5616935286153482751, guid: 5e61b2405c748744ba72ca7f0691a8a4,
         type: 3}
       propertyPath: m_Name
+      value: Beacon
+      objectReference: {fileID: 0}
+    - target: {fileID: 5616935286153482751, guid: 5e61b2405c748744ba72ca7f0691a8a4,
+        type: 3}
+      propertyPath: m_TagString
       value: Beacon
       objectReference: {fileID: 0}
     - target: {fileID: 5621685750038593658, guid: 5e61b2405c748744ba72ca7f0691a8a4,

@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
 	public static GameManager Instance { get; private set; }
 	private PlayerController player;
 	public PlayerController Player => player;
+	private Chaser chaser;
+
+	public Chaser Chaser => chaser;
 
 	private CameraManager cameraManager;
 
@@ -14,7 +17,7 @@ public class GameManager : MonoBehaviour
 	private UIManager uiManager;
 
 	public UIManager UiManager => uiManager;
-	
+
 	private List<GameObject> beacons = new List<GameObject>();
 	public List<GameObject> Beacons => beacons;
 
@@ -45,10 +48,15 @@ public class GameManager : MonoBehaviour
 	private void Setup()
 	{
 		player = FindObjectOfType<PlayerController>();
+		chaser = FindObjectOfType<Chaser>();
 		uiManager = FindObjectOfType<UIManager>();
-		foreach (var beacon in FindObjectsOfType<Beacon>())
+		if (player != null)
 		{
-			beacons.Add(beacon.gameObject);
+			beacons.Clear();
+			foreach (var beacon in GameObject.FindGameObjectsWithTag("Beacon"))
+			{
+				beacons.Add(beacon.gameObject);
+			}
 		}
 
 		//player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
