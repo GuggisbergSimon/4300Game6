@@ -11,7 +11,10 @@ public class GameManager : MonoBehaviour
 	private CameraManager cameraManager;
 
 	public CameraManager CameraManager => cameraManager;
+	private UIManager uiManager;
 
+	public UIManager UiManager => uiManager;
+	
 	private List<GameObject> beacons = new List<GameObject>();
 	public List<GameObject> Beacons => beacons;
 
@@ -42,6 +45,7 @@ public class GameManager : MonoBehaviour
 	private void Setup()
 	{
 		player = FindObjectOfType<PlayerController>();
+		uiManager = FindObjectOfType<UIManager>();
 		foreach (var beacon in FindObjectsOfType<Beacon>())
 		{
 			beacons.Add(beacon.gameObject);

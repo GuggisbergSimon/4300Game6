@@ -14,6 +14,11 @@ public class CameraManager : MonoBehaviour
         noise = vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
 
+    public void LessPrioritytoMainCamera(int value)
+    {
+        vcam.Priority -= value;
+    }
+
     public void Noise(float amplitudeGain, float frequencyGain)
     {
         noise.m_AmplitudeGain = amplitudeGain;

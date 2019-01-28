@@ -9,8 +9,6 @@ public class InkBehavior : MonoBehaviour
 	[SerializeField] private float maxTimeGrowing = 2.0f;
 	[SerializeField] private float minScaleAfterGrowing = 3.0f;
 	[SerializeField] private float maxScaleAfterGrowing = 5.0f;
-	[SerializeField] private float minRotationConstantSpeed = 1.0f;
-	[SerializeField] private float maxRotationConstantSpeed = 2.0f;
 	[SerializeField] private int minInkSpawned = 2;
 	[SerializeField] private int maxInkSpawned = 5;
 	[SerializeField] private GameObject inkPrefab = null;
@@ -18,7 +16,6 @@ public class InkBehavior : MonoBehaviour
 	[SerializeField] private Sprite[] sprites = null;
 	private float _timeGrowing;
 	private float _scaleAfterGrowing;
-	private float _rotationConstantSpeed;
 	private int _numberInkSpawned;
 	private SpriteRenderer _mySprite;
 
@@ -29,14 +26,8 @@ public class InkBehavior : MonoBehaviour
 		_mySprite.color = colors[Random.Range(0, colors.Length)];
 		_timeGrowing = Random.Range(minTimeGrowing, maxTimeGrowing);
 		_scaleAfterGrowing = Random.Range(minScaleAfterGrowing, maxScaleAfterGrowing);
-		_rotationConstantSpeed = Random.Range(minRotationConstantSpeed, maxRotationConstantSpeed);
 		_numberInkSpawned = Random.Range(minInkSpawned, maxInkSpawned);
 		StartCoroutine(InkGrowing(_timeGrowing));
-	}
-
-	private void Update()
-	{
-		transform.Rotate(0, 0, _rotationConstantSpeed * Time.deltaTime);
 	}
 
 	private IEnumerator InkGrowing(float time)

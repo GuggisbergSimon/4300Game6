@@ -368,7 +368,7 @@ MonoBehaviour:
   verticalSpeed: 10
   rotationSpeed: 4
   maxForwardSpeed: 30
-  respawnSpeed: 10
+  respawnSpeed: 30
   invincibilityTime: 3
   amplitudeGainRespawn: 5
   frequencyGainRespawn: 2
@@ -440,7 +440,7 @@ SpriteRenderer:
   m_SortingLayerID: 1133799605
   m_SortingLayer: 2
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: bc97898dcb685d848a24bb74de15a0ae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7a20534c921ea844f87ffd348418b4e8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
