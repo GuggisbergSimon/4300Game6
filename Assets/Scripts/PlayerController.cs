@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour
 		if (_beaconsActivated.Count >= GameManager.Instance.Beacons.Count)
 		{
 			GameManager.Instance.CameraManager.LessPrioritytoMainCamera(2);
+			GameManager.Instance.Chaser.StopChasing();
 			//todo implement end of game here
 		}
 	}
@@ -94,7 +95,6 @@ public class PlayerController : MonoBehaviour
 			_inputVertical = 0.0f;
 			_isAlive = false;
 			StartCoroutine(Respawn());
-			//todo implement code to fade to black
 		}
 	}
 }
