@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
 		_beaconsActivated.Add(beacon);
 		if (_beaconsActivated.Count >= GameManager.Instance.Beacons.Count)
 		{
+			GameManager.Instance.CameraManager.LessPrioritytoMainCamera(2);
 			//todo implement end of game here
 		}
 	}
