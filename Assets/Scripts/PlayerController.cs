@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
 	private IEnumerator Respawn()
 	{
 		GameManager.Instance.CameraManager.Noise(amplitudeGainRespawn, frequencyGainRespawn);
+		GameManager.Instance.UiManager.ToggleVignette(true);
 		float timer = 0.0f;
 		Vector3 initPos = transform.position;
 		float time = (initPos - respawnPos).magnitude/respawnSpeed;
@@ -79,6 +80,7 @@ public class PlayerController : MonoBehaviour
 		isInvincible = true;
 		_isAlive = true;
 		GameManager.Instance.CameraManager.Noise(0, 0);
+		GameManager.Instance.UiManager.ToggleVignette(false);
 		yield return new WaitForSeconds(invincibilityTime);
 		isInvincible = false;
 	}
