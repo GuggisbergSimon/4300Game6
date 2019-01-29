@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
 		chaser = FindObjectOfType<Chaser>();
 		uiManager = FindObjectOfType<UIManager>();
 		beaconFinder = FindObjectOfType<BeaconFinder>();
+		cameraManager = FindObjectOfType<CameraManager>();
 		if (player != null)
 		{
 			beacons.Clear();
@@ -76,7 +77,6 @@ public class GameManager : MonoBehaviour
 
 	private void Awake()
 	{
-		cameraManager = GetComponent<CameraManager>();
 		if (Instance != null && Instance != this)
 		{
 			Destroy(gameObject);
