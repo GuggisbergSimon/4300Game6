@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,12 +14,13 @@ public class GameManager : MonoBehaviour
 	private CameraManager cameraManager;
 
 	public CameraManager CameraManager => cameraManager;
-	private BeaconFinder beaconFinder;
 
-	public BeaconFinder BeaconFinder => beaconFinder;
 	private UIManager uiManager;
 
 	public UIManager UiManager => uiManager;
+	private BeaconFinder beaconFinder;
+
+	public BeaconFinder BeaconFinder => beaconFinder;
 
 	private List<GameObject> beacons = new List<GameObject>();
 	public List<GameObject> Beacons => beacons;
@@ -59,6 +60,7 @@ public class GameManager : MonoBehaviour
 		chaser = FindObjectOfType<Chaser>();
 		uiManager = FindObjectOfType<UIManager>();
 		beaconFinder = FindObjectOfType<BeaconFinder>();
+		cameraManager = FindObjectOfType<CameraManager>();
 		if (player != null)
 		{
 			beacons.Clear();
@@ -75,7 +77,6 @@ public class GameManager : MonoBehaviour
 
 	private void Awake()
 	{
-		cameraManager = GetComponent<CameraManager>();
 		if (Instance != null && Instance != this)
 		{
 			Destroy(gameObject);
