@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Chaser : MonoBehaviour
 {
@@ -6,12 +7,15 @@ public class Chaser : MonoBehaviour
 	[SerializeField] private float rotationSpeed = 3.0f;
 	[SerializeField] private float topSpeed = 5.0f;
 	[SerializeField, Range(0, 180)] private float visionAngle = 20.0f;
+	[SerializeField] private float decreaseVolumeTime = 1.0f;
+	private AudioSource _myAudioSource;
 	private Rigidbody2D _myRigidBody;
 	private ParticleSystem _myParticleSystem;
 	private Collider2D _myCollider;
 
 	private void Start()
 	{
+		_myAudioSource = GetComponent<AudioSource>();
 		_myRigidBody = GetComponent<Rigidbody2D>();
 		_myParticleSystem = GetComponent<ParticleSystem>();
 		_myCollider = GetComponent<Collider2D>();
@@ -45,7 +49,19 @@ public class Chaser : MonoBehaviour
 	{
 		_myParticleSystem.Stop();
 		Destroy(_myCollider);
-		
+		StartCoroutine(RaiseVolumeAudioSource(0,decreaseVolumeTime,_myAudioSource));
+	}
+	
+	private IEnumerator RaiseVolumeAudioSource(float volume, float time, AudioSource audioSource)
+	{
+		float timer = 0.0f;
+		float initVolume = audioSource.volume;
+		while (timer < time)
+		{
+			audioSource.volume = Mathf.Lerp(initVolume, volume, timer / time);
+			timer += Time.deltaTime;
+			yield return null;
+		}
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
