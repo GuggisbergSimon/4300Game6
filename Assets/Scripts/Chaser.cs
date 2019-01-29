@@ -7,10 +7,14 @@ public class Chaser : MonoBehaviour
 	[SerializeField] private float topSpeed = 5.0f;
 	[SerializeField, Range(0, 180)] private float visionAngle = 20.0f;
 	private Rigidbody2D _myRigidBody;
+	private ParticleSystem _myParticleSystem;
+	private Collider2D _myCollider;
 
 	private void Start()
 	{
 		_myRigidBody = GetComponent<Rigidbody2D>();
+		_myParticleSystem = GetComponent<ParticleSystem>();
+		_myCollider = GetComponent<Collider2D>();
 	}
 
 	private void FixedUpdate()
@@ -34,6 +38,13 @@ public class Chaser : MonoBehaviour
 		transform.rotation =
 			Quaternion.RotateTowards(transform.rotation, targetRot,
 				rotationSpeed * Time.deltaTime);
+		
+	}
+
+	public void StopChasing()
+	{
+		_myParticleSystem.Stop();
+		Destroy(_myCollider);
 		
 	}
 

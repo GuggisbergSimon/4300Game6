@@ -15,14 +15,13 @@ public class PlayerController : MonoBehaviour
 	private float _inputVertical;
 	private Rigidbody2D _myRigidBody;
 	private bool _isAlive = true;
-	private bool isInvincible = false;
-	public bool IsInvincible => isInvincible;
-	private Vector3 respawnPos;
-	private List<GameObject> _beaconsActivated = new List<GameObject>();
+	private bool _isInvincible = false;
+	public bool IsInvincible => _isInvincible;
+	private Vector3 _respawnPos;
 
 	private void Start()
 	{
-		respawnPos = transform.position;
+		_respawnPos = transform.position;
 		_myRigidBody = GetComponent<Rigidbody2D>();
 	}
 
@@ -56,10 +55,21 @@ public class PlayerController : MonoBehaviour
 
 	public void BeaconActivated(GameObject beacon)
 	{
-		_beaconsActivated.Add(beacon);
-		if (_beaconsActivated.Count >= GameManager.Instance.Beacons.Count)
+		GameManager.Instance.BeaconsActivated.Add(beacon);
+		for (int i = 0; i < GameManager.Instance.BeaconsLeft.Count; i++)
+		{
+			if (beacon.transform.position == GameManager.Instance.BeaconsLeft[i].transform.position)
+			{
+				GameManager.Instance.BeaconsLeft.RemoveAt(i);
+			}
+		}
+		GameManager.Instance.BeaconFinder.ReScan();
+
+		if (GameManager.Instance.BeaconsActivated.Count >= GameManager.Instance.Beacons.Count)
 		{
 			GameManager.Instance.CameraManager.LessPrioritytoMainCamera(2);
+			GameManager.Instance.Chaser.StopChasing();
+			//todo remove beaconfinder here
 			//todo implement end of game here
 		}
 	}
@@ -70,20 +80,20 @@ public class PlayerController : MonoBehaviour
 		GameManager.Instance.UiManager.ToggleVignette(true);
 		float timer = 0.0f;
 		Vector3 initPos = transform.position;
-		float time = (initPos - respawnPos).magnitude/respawnSpeed;
+		float time = (initPos - _respawnPos).magnitude / respawnSpeed;
 		while (timer < time)
 		{
-			transform.position = Vector3.Lerp(initPos, respawnPos, timer / time);
+			transform.position = Vector3.Lerp(initPos, _respawnPos, timer / time);
 			timer += Time.deltaTime;
 			yield return null;
 		}
 
-		isInvincible = true;
+		_isInvincible = true;
 		_isAlive = true;
 		GameManager.Instance.CameraManager.Noise(0, 0);
 		GameManager.Instance.UiManager.ToggleVignette(false);
 		yield return new WaitForSeconds(invincibilityTime);
-		isInvincible = false;
+		_isInvincible = false;
 	}
 
 	public void Die()
@@ -94,7 +104,6 @@ public class PlayerController : MonoBehaviour
 			_inputVertical = 0.0f;
 			_isAlive = false;
 			StartCoroutine(Respawn());
-			//todo implement code to fade to black
 		}
 	}
 }
