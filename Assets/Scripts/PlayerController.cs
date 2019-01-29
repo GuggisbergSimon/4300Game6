@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Timers;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -11,6 +12,8 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private float invincibilityTime = 1.0f;
 	[SerializeField] private float amplitudeGainRespawn = 5.0f;
 	[SerializeField] private float frequencyGainRespawn = 2.0f;
+	[SerializeField] private AudioSource deathAudioSource = null;
+	[SerializeField] private float fadeInDeathSoundTime = 1.0f;
 	private float _inputHorizontal;
 	private float _inputVertical;
 	private Rigidbody2D _myRigidBody;
@@ -18,6 +21,7 @@ public class PlayerController : MonoBehaviour
 	private bool _isInvincible = false;
 	public bool IsInvincible => _isInvincible;
 	private Vector3 _respawnPos;
+	private Coroutine deathAudioCoroutine;
 
 	private void Start()
 	{
@@ -91,6 +95,19 @@ public class PlayerController : MonoBehaviour
 		GameManager.Instance.UiManager.ToggleVignette(false);
 		yield return new WaitForSeconds(invincibilityTime);
 		_isInvincible = false;
+		deathAudioCoroutine = StartCoroutine(RaiseVolumeAudioSource(0, fadeInDeathSoundTime, deathAudioSource));
+	}
+
+	private IEnumerator RaiseVolumeAudioSource(float volume, float time, AudioSource audioSource)
+	{
+		float timer = 0.0f;
+		float initVolume = audioSource.volume;
+		while (timer < time)
+		{
+			audioSource.volume = Mathf.Lerp(initVolume, volume, timer / time);
+			timer += Time.deltaTime;
+			yield return null;
+		}
 	}
 
 	public void Die()
@@ -101,6 +118,11 @@ public class PlayerController : MonoBehaviour
 			_inputVertical = 0.0f;
 			_isAlive = false;
 			StartCoroutine(Respawn());
+			if (deathAudioCoroutine != null)
+			{
+				StopCoroutine(deathAudioCoroutine);
+			}
+			deathAudioCoroutine = StartCoroutine(RaiseVolumeAudioSource(1.0f, fadeInDeathSoundTime, deathAudioSource));
 		}
 	}
 }
