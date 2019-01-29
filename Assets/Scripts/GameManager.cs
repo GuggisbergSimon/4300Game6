@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
 		{
 			beacons.Clear();
 			BeaconsLeft.Clear();
+			beaconsActivated.Clear();
 			foreach (var beacon in GameObject.FindGameObjectsWithTag("Beacon"))
 			{
 				beacons.Add(beacon.gameObject);
