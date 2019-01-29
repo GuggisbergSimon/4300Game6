@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,10 +15,11 @@ public class PlayerController : MonoBehaviour
 	private float _inputVertical;
 	private Rigidbody2D _myRigidBody;
 	private bool _isAlive = true;
-	private bool _isInvincible = false;
-	public bool IsInvincible => _isInvincible;
-	private Vector3 _respawnPos;
-
+	private bool isInvincible = false;
+	public bool IsInvincible => isInvincible;
+	private Vector3 respawnPos;
+	private List<GameObject> _beaconsActivated = new List<GameObject>();
+    
 	private void Start()
 	{
 		_respawnPos = transform.position;
@@ -67,10 +68,7 @@ public class PlayerController : MonoBehaviour
 
 		if (GameManager.Instance.BeaconsActivated.Count >= GameManager.Instance.Beacons.Count)
 		{
-			GameManager.Instance.CameraManager.LessPrioritytoMainCamera(2);
-			GameManager.Instance.Chaser.StopChasing();
-			//todo remove beaconfinder here
-			//todo implement end of game here
+			GameManager.Instance.EndGame();
 		}
 	}
 
