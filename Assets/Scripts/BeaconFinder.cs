@@ -17,8 +17,6 @@ public class BeaconFinder : MonoBehaviour
 	private void Update()
 	{
 		Scan();
-		Debug.Log(Vector3.Angle(Vector2.up, _currentPos - (Vector2) GameManager.Instance.Player.transform.position));
-		//transform.position = _currentPos;
 		transform.parent.up = (Vector3) _currentPos - GameManager.Instance.Player.transform.position;
 	}
 
