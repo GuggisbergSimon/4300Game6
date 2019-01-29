@@ -15,6 +15,13 @@ public class GameManager : MonoBehaviour
 
 	public CameraManager CameraManager => cameraManager;
 
+	private UIManager uiManager;
+
+	public UIManager UiManager => uiManager;
+	private BeaconFinder beaconFinder;
+
+	public BeaconFinder BeaconFinder => beaconFinder;
+
 	private List<GameObject> beacons = new List<GameObject>();
 	public List<GameObject> Beacons => beacons;
 	private List<GameObject> beaconsActivated = new List<GameObject>();
@@ -50,7 +57,10 @@ public class GameManager : MonoBehaviour
 	private void Setup()
 	{
 		player = FindObjectOfType<PlayerController>();
-		foreach (var beacon in FindObjectsOfType<Beacon>())
+		chaser = FindObjectOfType<Chaser>();
+		uiManager = FindObjectOfType<UIManager>();
+		beaconFinder = FindObjectOfType<BeaconFinder>();
+		if (player != null)
 		{
 			beacons.Clear();
 			BeaconsLeft.Clear();
