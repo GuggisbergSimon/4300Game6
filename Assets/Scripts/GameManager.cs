@@ -94,6 +94,13 @@ public class GameManager : MonoBehaviour
 		SceneManager.LoadScene(nameLevel);
 	}
 
+	public void EndGame()
+	{
+		cameraManager.LessPrioritytoMainCamera(2);
+		chaser.StopChasing();
+		uiManager.ShowEndPanel();
+	}
+
 	public void QuitGame()
 	{
 #if UNITY_EDITOR

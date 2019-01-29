@@ -67,10 +67,7 @@ public class PlayerController : MonoBehaviour
 
 		if (GameManager.Instance.BeaconsActivated.Count >= GameManager.Instance.Beacons.Count)
 		{
-			GameManager.Instance.CameraManager.LessPrioritytoMainCamera(2);
-			GameManager.Instance.Chaser.StopChasing();
-			//todo remove beaconfinder here
-			//todo implement end of game here
+			GameManager.Instance.EndGame();
 		}
 	}
 

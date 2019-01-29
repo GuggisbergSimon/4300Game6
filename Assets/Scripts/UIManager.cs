@@ -1,18 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Rendering.PostProcessing;
 
 public class UIManager : MonoBehaviour
 {
 	[SerializeField] private PostProcessVolume vignettePostProcessVolume = null;
 	[SerializeField] private float vignetteTransitionTime = 1.0f;
+	[SerializeField] private GameObject endPanel = null;
+	[SerializeField] private GameObject endButtonDefaultSelected = null;
 	private float _initWeightVignette;
 	private Coroutine _vignetteCoroutine;
 
 	private void Start()
 	{
 		_initWeightVignette = vignettePostProcessVolume.weight;
+	}
+
+	public void ShowEndPanel()
+	{
+		endPanel.SetActive(true);
+		EventSystem.current.SetSelectedGameObject(endButtonDefaultSelected);
 	}
 
 	public void ToggleVignette(bool value)

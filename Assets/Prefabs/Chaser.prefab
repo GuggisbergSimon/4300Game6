@@ -68,9 +68,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a080e1685b2a7749bee2dcd179e1000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardAcceleration: 10
+  forwardAcceleration: 20
   rotationSpeed: 120
-  topSpeed: 10
+  topSpeed: 20
   visionAngle: 180
 --- !u!199 &1458874932
 ParticleSystemRenderer:
